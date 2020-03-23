@@ -1,0 +1,59 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Ranges File",
+	"patterns": [
+		{ "include": "#range-directive" },
+		{ "include": "#normal" }
+	],
+	"repository": {
+		"range-directive": {
+			"begin": "^((?:\\d+:){0,2}\\d+(?:\\.\\d+)?)-((?:\\d+:){0,2}\\d+(?:\\.\\d+)?)(?:\\s+|\n)",
+			"end": "$",
+			"beginCaptures": {
+				"0": { "name": "constant.numeric" },
+				"1": { "name": "constant.numeric" }
+			},
+			"patterns": [
+				{ "include": "#marker" }
+			]
+		},
+		"marker": {
+			"match": "[a-zA-Z0-9_@]+",
+			"name": "entity.name.type"
+		},
+		"normal": {
+			"patterns": [
+				{ "include": "#strings" }
+			]
+		},
+		"strings": {
+			"patterns": [
+				{ "include": "#double-quoted-strings" },
+				{ "include": "#back-quoted-strings" }
+			]
+		},
+		"double-quoted-strings": {
+			"name": "string.quoted.double.ranges-file",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.ranges-file",
+					"match": "\\\\."
+				}
+			]
+		},
+		"back-quoted-strings": {
+			"name": "string.quoted.single.ranges-file",
+			"begin": "`",
+			"end": "`",
+			"patterns": [
+				{
+					"name": "constant.character.escape.ranges-file",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.ranges-file"
+}

@@ -1,0 +1,25 @@
+{
+    "name": "ranges-file-language",
+    "displayName": "Ranges File Language",
+    "description": "Adds support for ranges files",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.43.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "ranges-file",
+            "aliases": ["Ranges File", "ranges-file"],
+            "extensions": [".rng"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "ranges-file",
+            "scopeName": "source.ranges-file",
+            "path": "./syntaxes/ranges-file.tmLanguage.json"
+        }]
+    }
+}
